@@ -32,6 +32,9 @@ export default {
 </script>
 
 <style>
+
+* { margin: 0; padding: 0px; }
+
 html,
 body {
   width: 100%;
@@ -48,29 +51,35 @@ body {
 
 .container {
   position: relative;
-  display: inline;
 }
 
-.container>img {
+.container > img {
   width: 100%;
   object-fit: contain;
+  -o-object-fit: contain;
   object-position: top;
+  -o-object-position: top;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .hidder {
   position: absolute;
+  display: block;
   width: 20%;
   height: 11%;
   background: rgba(0.9, 0.9, 0.9, 0.5);
   transform: translate(-50%, -50%);
   top: 15.5%;
   left: 19%;
+  z-index: 2;
 }
 
 .vue-scratchable-wrapper {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .vue-scratchable-wrapper > img {
