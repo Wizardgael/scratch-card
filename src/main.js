@@ -1,4 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import VueConfetti from 'vue-confetti'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(VueConfetti)
+app.mount('#app')

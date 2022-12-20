@@ -38,6 +38,14 @@
         type: Number,
         default: 150,
       },
+      onClick: {
+        type: Function,
+        default: () => {}
+      },
+      onRelease: {
+        type: Function,
+        default: () => {}
+      }
     },
     data() {
       return {
@@ -179,6 +187,7 @@
         this.lastPositionHelper(this.position.currX, this.position.currY);
         this.draw();
         this.isPressed = true;
+        this.onClick()
       },
       mouseMove({ clientX, clientY }) {
         if (!this.isPressed) return;
@@ -186,6 +195,7 @@
         this.draw();
       },
       mouseUp() {
+        this.onRelease()
         this.isPressed = false;
       },
       touchDown({ targetTouches: [{ clientX, clientY }] }) {
@@ -194,6 +204,7 @@
         this.lastPositionHelper(this.position.currX, this.position.currY);
         this.draw();
         this.isPressed = true;
+        this.onClick()
       },
       touchMove(event) {
         event.preventDefault();
@@ -203,6 +214,7 @@
       },
       touchUp() {
         this.isPressed = false;
+        this.onRelease()
       },
       calculateClearedArea() {
         if (!this.getPercentageCleared) return;

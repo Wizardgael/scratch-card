@@ -2,7 +2,7 @@
   <div class="container">
     <img :src="require('./assets/bg.jpg')">
     <div class="hidder">
-      <vue-scratchable v-slot="{ init }" :brushOptions="brush" :hideOptions="hide">
+      <vue-scratchable v-slot="{ init }" :brushOptions="brush" :hideOptions="hide" :onClick="startConfetti" :onRelease="stopConfetti">
         <img :src="require('./assets/bg.jpg')" @load="init">
       </vue-scratchable>
     </div>
@@ -11,12 +11,35 @@
 
 <script>
 import VueScratchable from './components/vue-scratchable.vue';
+
 export default {
   components: {
     VueScratchable,
   },
   data() {
+
+    let particleStarted = false
+
+    const startConfetti = () => {
+      if(!particleStarted){
+        this.$confetti.start()
+        particleStarted = true
+        console.log("start")
+      }
+    }
+
+    const stopConfetti = () => {
+      setTimeout(() => {
+        this.$confetti.stop()
+        particleStarted = false
+        console.log("stop")
+      }, 200)
+    }
+
+
     return {
+      startConfetti,
+      stopConfetti,
       percentage: 0,
       hide: {
         type: 'color',
@@ -61,7 +84,6 @@ body {
   -o-object-position: top;
   display: block;
   position: relative;
-  z-index: 1;
 }
 
 .hidder {
@@ -73,7 +95,6 @@ body {
   transform: translate(-50%, -50%);
   top: 15.5%;
   left: 19%;
-  z-index: 2;
 }
 
 .vue-scratchable-wrapper {
