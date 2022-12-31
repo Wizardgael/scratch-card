@@ -8,8 +8,13 @@
     </div>
   </div> -->
   <div class="card">
-    <img :src="require('./assets/bg.jpg')">
+    <img :src="require('./assets/bg2.jpg')">
     <div class="hidder">
+      <vue-scratchable v-slot="{ init }" :brushOptions="brush" :hideOptions="hide" :onClick="startConfetti" :onRelease="stopConfetti">
+        <img :src="require('./assets/bg.jpg')" @load="init">
+      </vue-scratchable>
+    </div>
+    <div class="hidder-2">
       <vue-scratchable v-slot="{ init }" :brushOptions="brush" :hideOptions="hide" :onClick="startConfetti" :onRelease="stopConfetti">
         <img :src="require('./assets/bg.jpg')" @load="init">
       </vue-scratchable>
@@ -19,6 +24,7 @@
 
 <script>
 import VueScratchable from './components/vue-scratchable.vue';
+import paperPattern from './assets/natural-paper-texture.jpg';
 
 VueScratchable.__defaults;
 
@@ -29,6 +35,12 @@ export default {
   data() {
 
     let particleStarted = false
+
+    // this.$confetti.update({
+    //       defaultColors: [
+    //         'red',
+    //       ],
+    // });
 
     const startConfetti = () => {
       if(!particleStarted){
@@ -52,8 +64,11 @@ export default {
       stopConfetti,
       percentage: 0,
       hide: {
-        type: 'color',
-        value: "#000"
+        // type: 'color',
+        // value: "#000"
+        type: 'pattern',
+        src: paperPattern,
+        repeat: 'repeat',
       },
       brush: {
         size: 60,
@@ -90,7 +105,7 @@ body {
   background-color: white;
   border-radius: 1.5rem;
   box-shadow: 10px 10px 5px rgb(0.6, 0.6, 0.6);
-  width: 90%;
+  width: 60%;
   aspect-ratio: 16/9;
   overflow: hidden;
   position: relative;
@@ -108,12 +123,23 @@ body {
 .hidder {
   position: absolute;
   display: block;
-  width: 20%;
-  height: 11%;
+  width: 30%;
+  height: 30%;
   /* background: rgba(0.9, 0.9, 0.9, 0.5); */
   transform: translate(-50%, -50%);
-  top: 15.5%;
-  left: 19%;
+  top: 35%;
+  left: 24%;
+}
+
+.hidder-2 {
+  position: absolute;
+  display: block;
+  width: 13%;
+  height: 12%;
+  /* background: rgbDa(0.9, 0.9, 0.9, 0.5); */
+  transform: translate(-50%, -50%);
+  top: 61.5%;
+  left: 50%;
 }
 
 .vue-scratchable-wrapper {
