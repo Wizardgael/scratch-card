@@ -21,7 +21,7 @@
         :onRelease="stopConfetti">
         <img :src="require('./assets/bg.jpg')" @load="init">
       </vue-scratchable>
-      <div class="text" :style="hidder1">Grattez ici</div>
+      <div class="text" :style="hidder2">Grattez ici</div>
     </div>
   </div>
 </template>
