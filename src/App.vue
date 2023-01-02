@@ -40,15 +40,15 @@ export default {
 
     let particleStarted = false
 
-    // this.$confetti.update({
-    //       defaultColors: [
-    //         'red',
-    //       ],
-    // });
-
     const startConfetti = () => {
       if (!particleStarted) {
         this.$confetti.start()
+        this.$confetti.update({
+          defaultColors: [
+            'gold',
+            'orange'
+          ],
+    });
         particleStarted = true
         console.log("start")
       }
@@ -146,7 +146,7 @@ body {
   display: block;
   width: 30%;
   height: 30%;
-  background: rgba(0.9, 0.9, 0.9, 0.5);
+  /* background: rgba(0.9, 0.9, 0.9, 0.5); */
   transform: translate(-50%, -50%);
   top: 30%;
   left: 24%;
@@ -178,7 +178,7 @@ body {
   display: block;
   width: 13%;
   height: 12%;
-  background: rgba(0.9, 0.9, 0.9, 0.5);
+  /* background: rgba(0.9, 0.9, 0.9, 0.5); */
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
