@@ -110,7 +110,8 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background-color: #aaaaaa;
+  /* background-color: #ff7500; */
+  background-color: #000000;
 }
 
 #app {
