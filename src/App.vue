@@ -124,7 +124,7 @@ body {
 
 .card {
   background-color: white;
-  border-radius: 1.5rem;
+  /* border-radius: 1.5rem; */
   box-shadow: 10px 10px 5px rgb(0.6, 0.6, 0.6);
   width: 60%;
   aspect-ratio: 16/11;
